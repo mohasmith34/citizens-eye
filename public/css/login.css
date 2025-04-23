@@ -1,0 +1,115 @@
+/* === login.css (with responsive design) === */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    width: 800px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .login-form {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .login-form h2 {
+    color: #2c2c2c;
+    margin-bottom: 30px;
+  }
+  
+  .login-form label {
+    display: block;
+    margin-top: 15px;
+    color: #444;
+    font-size: 14px;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #3bae41;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-form button:hover {
+    background-color: #329c37;
+  }
+  
+  .signup-text {
+    margin-top: 20px;
+    font-size: 13px;
+    text-align: center;
+  }
+  
+  .signup-text a {
+    color: purple;
+    text-decoration: none;
+  }
+  
+  .illustration {
+    flex: 1;
+    background-color: #66cc66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .illustration img {
+    width: 80%;
+    max-width: 300px;
+  }
+  
+  /* === Responsive Styles === */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+    }
+  
+    .illustration {
+      order: -1;
+      padding: 20px 0;
+    }
+  
+    body {
+      height: auto;
+      padding: 40px 20px;
+      align-items: flex-start;
+    }
+  }
+  

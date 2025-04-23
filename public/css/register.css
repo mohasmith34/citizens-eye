@@ -1,0 +1,114 @@
+/* === signup.css (with responsive design) === */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #e8f5e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    width: 800px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .signup-form {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .signup-form h2 {
+    color: #2c2c2c;
+    margin-bottom: 30px;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-top: 15px;
+    color: #444;
+    font-size: 14px;
+  }
+  
+  .signup-form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .signup-form button:hover {
+    background-color: #2e7d32;
+  }
+  
+  .login-text {
+    margin-top: 20px;
+    font-size: 13px;
+    text-align: center;
+  }
+  
+  .login-text a {
+    color: #6a1b9a;
+    text-decoration: none;
+  }
+  
+  .illustration {
+    flex: 1;
+    background-color: #66cc66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .illustration img {
+    width: 80%;
+    max-width: 300px;
+  }
+  
+  /* === Responsive Styles === */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+    }
+  
+    .illustration {
+      order: -1;
+      padding: 20px 0;
+    }
+  
+    body {
+      height: auto;
+      padding: 40px 20px;
+      align-items: flex-start;
+    }
+  }
