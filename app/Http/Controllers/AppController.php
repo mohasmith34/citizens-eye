@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\ReportModel;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
-
     public function showregister(){
-        if(auth()->check()){
+        if(Auth::check()){
             return redirect('/list');
         }
         return view('register');
     }
 
     public function showlogin(){
-        if(auth()->check()){
+        if(Auth::check()){
             return redirect('/list');
         }
         return view('login');
@@ -40,7 +40,7 @@ class AppController extends Controller
             'password' => $request->password,
         ]);
 
-        auth()->login($user);
+        Auth::login($user);
 
         return redirect('/list');
     }
@@ -58,7 +58,7 @@ class AppController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             
-            auth()->login($user);
+            Auth::login($user);
             return redirect('/list'); 
         }
 
@@ -68,7 +68,7 @@ class AppController extends Controller
 
     public function logout()
     {
-        auth()->logout();
+        Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
@@ -99,7 +99,7 @@ class AppController extends Controller
 
 
         ReportModel::create([
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
             'description' => $request->description,
             'category' => $request->category,
             'location' => $request->location,
@@ -113,13 +113,14 @@ class AppController extends Controller
 
 
     public function list(){
-        $reports = auth()->user()->reports()->where('is_deleted', false)->latest()->paginate(10);
-
-        return view('list' , compact('reports'));
+        $reports = Auth::user()->reports()->where('is_deleted', false)->latest()->paginate(10);
+    
+        return view('list', compact('reports'));
     }
+    
 
     public function delete($id){
-        $report = ReportModel::where('user_id', auth()->id())->findOrFail($id);
+        $report = ReportModel::where('user_id', Auth::id())->findOrFail($id);
         $report->is_deleted = true;
         $report->save();
 

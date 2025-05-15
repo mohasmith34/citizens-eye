@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 
 Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+    return view('home');
+});
 
 
 Route::get('/report', function () {
@@ -25,3 +25,8 @@ Route::post('/logout',[AppController::class , 'logout']);
 Route::post('/report',[AppController::class , 'report']);
 
 Route::post('/report/delete/{id}', [AppController::class, 'delete'])->name('report.delete');
+
+
+Route::get('/admin', function () {
+    return view('admin');
+});
