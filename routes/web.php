@@ -28,5 +28,8 @@ Route::post('/report/delete/{id}', [AppController::class, 'delete'])->name('repo
 
 
 Route::get('/admin', function () {
+    if (auth()->user()->email != "admin@gmail.com") {
+         return redirect()->back();
+    }
     return view('admin');
 });

@@ -56,10 +56,17 @@ class AppController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
+
         if ($user && Hash::check($request->password, $user->password)) {
             
             Auth::login($user);
-            return redirect('/list'); 
+            if ($user->email == "admin@gmail.com" ) {
+                return redirect('/admin');
+            }else {
+                return redirect('/list');
+            }
+            
+             
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);
@@ -113,7 +120,7 @@ class AppController extends Controller
 
 
     public function list(){
-        $reports = Auth::user()->reports()->where('is_deleted', false)->latest()->paginate(10);
+        $reports = auth()->reports()->where('is_deleted', false)->latest()->paginate(10);
     
         return view('list', compact('reports'));
     }
