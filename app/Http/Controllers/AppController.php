@@ -120,7 +120,7 @@ class AppController extends Controller
 
 
     public function list(){
-        $reports = auth()->reports()->where('is_deleted', false)->latest()->paginate(10);
+        $reports = Auth::user()->reports()->where('is_deleted', false)->latest()->paginate(10);
     
         return view('list', compact('reports'));
     }
@@ -133,6 +133,16 @@ class AppController extends Controller
 
     return redirect()->back()->with('success', 'Report deleted.');
     }
+
+
+
+
+    public function check_admin() {
+    if (Auth::user()->email != "admin@gmail.com") {
+         return redirect()->back();
+    }
+    return view('admin');
+}
     
 
     

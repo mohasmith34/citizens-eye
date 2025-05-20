@@ -28,7 +28,7 @@ class User extends Authenticatable
 
     public function reports()
     {
-        return $this->hasMany(ReportModel::class, 'user_id');
+        return $this->hasMany(\App\Models\ReportModel::class);
     }
     /**
      * The attributes that should be hidden for serialization.

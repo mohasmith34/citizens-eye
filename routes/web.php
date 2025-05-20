@@ -27,9 +27,4 @@ Route::post('/report',[AppController::class , 'report']);
 Route::post('/report/delete/{id}', [AppController::class, 'delete'])->name('report.delete');
 
 
-Route::get('/admin', function () {
-    if (auth()->user()->email != "admin@gmail.com") {
-         return redirect()->back();
-    }
-    return view('admin');
-});
+Route::get('/admin', [AppController::class , 'check_admin'])->name('admin');
